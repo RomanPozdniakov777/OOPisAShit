@@ -1,0 +1,35 @@
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                             http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <servlet>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>com.tuler_durden.clientgui.SearchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/search</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>ClientServerServlet</servlet-name>
+        <servlet-class>com.tuler_durden.clientgui.ClientServerServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClientServerServlet</servlet-name>
+        <url-pattern>/clientserver</url-pattern>
+    </servlet-mapping>
+    
+    
+     <servlet>
+        <servlet-name>LibraryServlet</servlet-name>
+        <servlet-class>com.tuler_durden.clientgui.LibraryServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LibraryServlet</servlet-name>
+        <url-pattern>/library</url-pattern>
+    </servlet-mapping>
+</web-app>

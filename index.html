@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library System</title>
+</head>
+<body>
+    <h1>Library System</h1>
+    <h2>Available Books</h2>
+    <ul id="bookList"></ul>
+
+    <h2>Borrow a Book</h2>
+    <form id="borrowForm">
+        <label for="book_id">Book ID:</label>
+        <input type="text" id="book_id" name="book_id">
+        <label for="user_id">User ID:</label>
+        <input type="text" id="user_id" name="user_id">
+        <button type="button" onclick="borrowBook()">Borrow</button>
+    </form>
+
+    <script>
+        function loadBooks() {
+             fetch('/ClientGUI-1.0-SNAPSHOT/library?action=listBooks')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('bookList').innerHTML = data;
+                });
+        }
+
+        function borrowBook() {
+            const bookId = document.getElementById('book_id').value;
+            const userId = document.getElementById('user_id').value;
+
+            fetch(`/LibrarySystem/library?action=borrowBook&book_id=${bookId}&user_id=${userId}`)
+                .then(response => response.text())
+                .then(data => {
+                    alert(data);
+                    loadBooks(); // Refresh the book list
+                });
+        }
+
+        // Load books on page load
+        window.onload = loadBooks;
+    </script>
+</body>
+</html>
